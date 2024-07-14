@@ -4,11 +4,11 @@ Repositorio del Proyecto de mensajería Talky
 ## Estructura del Repositorio
 **DiagramaDeClases.png:** Diagrama de clases del proyecto Talky, elaborado en la materia de Desarrollo de Software. Este diagrama ilustra las principales clases del sistema y sus relaciones.
 **src/:** Carpeta que contiene el código fuente del proyecto.
-* Usuario.java: Implementación de la clase Usuario.
-* Mensaje.java: Implementación de la clase Mensaje.
-* Chat.java: Implementación de la clase Chat.
-* Grupo.java: Implementación de la clase Grupo.
-* Autenticación.java: Implementación de la clase Autenticación.
+* usuario.java: Implementación de la clase Usuario.
+* mensaje.java: Implementación de la clase Mensaje.
+* chat.java: Implementación de la clase Chat.
+* grupo.java: Implementación de la clase Grupo.
+* autenticacion.java: Implementación de la clase Autenticación.
 * README.md: Este archivo que estás leyendo.
 
 ## Instalación y Uso
