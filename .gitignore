@@ -53,6 +53,7 @@ package-lock.json
 # Dependencias
 ####################
 /node_modules
+/.pem
 /.pnp
 .pnp.js
 
