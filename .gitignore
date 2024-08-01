@@ -1,0 +1,98 @@
+# Git ignore base template
+
+# Sistema operativo
+####################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Node.js
+####################
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+
+# IDEs y editores
+####################
+# JetBrains IDEs (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-workspace
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Entornos de desarrollo
+####################
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencias
+####################
+/node_modules
+/.pnp
+.pnp.js
+
+# Compilación de producción
+####################
+/dist/
+/build/
+
+# Logs
+####################
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temp
+####################
+/tmp
+/out
+/coverage
+/.next
+
+# Directorios de distribución
+####################
+/dist/
+/public/
+
+# Bases de datos locales
+####################
+*.sqlite
+*.db
+
+# Archivos de configuración del sistema
+####################
+.DS_Store
+Thumbs.db
+
+# Llaves SSH y claves privadas
+####################
+*.pem
+*.key
+*.crt
+*.cert
