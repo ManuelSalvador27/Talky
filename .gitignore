@@ -97,3 +97,4 @@ Thumbs.db
 *.key
 *.crt
 *.cert
+talky_v2/node_modules/public-encrypt/test/test_rsa_privkey.pem
