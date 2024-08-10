@@ -13,7 +13,8 @@ Repositorio del Proyecto de mensajería Talky
 
 ## Instalación y Uso
 ### Requisitos
-* Node.js y npm (Node Package Manager)
+* Node.js version `v14.21.3` 
+* npm (Node Package Manager)
 * VS Code
 * Git
 * Firebase Account
@@ -27,6 +28,7 @@ git clone https://github.com/tu_usuario/talky.git
 
 ```clojure
 cd talky
+cd talky_v2
 ```
 
 3. Instala las dependencias del proyecto:
@@ -35,16 +37,33 @@ cd talky
 npm install
 ```
 
-4. Configura Firebase para el proyecto y añade tu archivo `firebaseConfig.js` en el directorio `src` con tu configuración de Firebase.
-
 ### Ejecución del Proyecto
-Para ejecutar la aplicación en tu entorno local:
+Ejecuta el comando para iniciar el servidor de desarrollo:
 
 ```clojure
-npm run serve
+npm run dev
 ```
 
 Abre tu navegador y visita `http://localhost:8080` para ver la aplicación en funcionamiento.
+
+## Historial de cambios
+
+<details>
+    <summary>Miércoles, 06 de Agosto de 2024</summary>
+    Nuevas Funcionalidades:
+        - Se han agregado los enlaces al proyecto de Firebase.
+        - Se ha implementado la funcionalidad de login y registro de usuarios.
+        - Ahora es posible editar el perfil de usuario desde la aplicación.
+        - Se ha implementado la funcionalidad de verificar email, emitido por medio de firebase.
+</details>
+
+<details>
+    <summary>Sábado, 10 de Agosto de 2024</summary>
+    Nuevas Funcionalidades:
+        - Se ha implementado la funcionalidad de cambio de conrseña, con un temporizador.
+        - Cambios para la ejecución del código [Entorno desarrollo].
+        - Se anexa un historial de cambios del archivo README.md
+</details>
 
 ## Contribución
 Las contribuciones son bienvenidas. Si deseas contribuir, por favor sigue estos pasos:
