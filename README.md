@@ -50,6 +50,7 @@ Abre tu navegador y visita `http://localhost:8080` para ver la aplicación en fu
 
 <details>
     <summary>Miércoles, 06 de Agosto de 2024</summary>
+    
     Nuevas Funcionalidades:
         - Se han agregado los enlaces al proyecto de Firebase.
         - Se ha implementado la funcionalidad de login y registro de usuarios.
@@ -59,6 +60,7 @@ Abre tu navegador y visita `http://localhost:8080` para ver la aplicación en fu
 
 <details>
     <summary>Sábado, 10 de Agosto de 2024</summary>
+    
     Nuevas Funcionalidades:
         - Se ha implementado la funcionalidad de cambio de conrseña, con un temporizador.
         - Cambios para la ejecución del código [Entorno desarrollo].
