@@ -52,7 +52,6 @@ export default {
         photo_url() {
             return this.$store.getters.photo_url
         }
-
     },
     watch: {
 
@@ -68,10 +67,7 @@ export default {
             this.$store.dispatch('readFile','setImageURL')
         },
         updateProfile(){
-            
             const self = this
-            
-          
             if (self.files) {
                 var user = firebase.auth().currentUser;
                 if (this.photo_url!=null) {
