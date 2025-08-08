@@ -1,5 +1,5 @@
 <template>
-<f7-page name="about">
+<f7-page name="Rquests">
     <f7-navbar title="Requests" back-link="Back"></f7-navbar>
     <f7-block-title>Friend requests</f7-block-title>
     <f7-list media-list>

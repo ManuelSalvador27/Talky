@@ -10,7 +10,7 @@
           <div class="wrapper">
             <img class="image--cover" :src="photo_url" alt />
           </div>
-          <f7-block style="text-align:center;">{{display_name}}s</f7-block>
+          <f7-block style="text-align:center;">{{display_name}}</f7-block>
 
           <f7-list>
             <f7-list-item link="/signin/" view=".view-main" panel-close title="Sign in"></f7-list-item>
@@ -27,23 +27,23 @@
         <f7-link
           tab-link="#view-home"
           tab-link-active
-          icon-ios="f7:home_fil"
-          icon-aurora="f7:home_fil"
-          icon-md="material:home"
+          icon-ios="f7:house_fil"
+          icon-aurora="f7:house_fil"
+          icon-md="material:house"
           text="Home"
         ></f7-link>
         <f7-link
           tab-link="#view-chatgroups"
-          icon-ios="f7:persons_round_fill"
-          icon-aurora="f7:persons_round_fill"
-          icon-md="material:group"
+          icon-ios="f7:person_2_fill"
+          icon-aurora="f7:person_2_fill"
+          icon-md="material:person_2"
           text="Groups"
         ></f7-link>
         <f7-link
           tab-link="#view-settings"
-          icon-ios="f7:settings_fill"
-          icon-aurora="f7:settings_fill"
-          icon-md="material:settings"
+          icon-ios="f7:gear_alt_fill"
+          icon-aurora="f7:gear_alt_fill"
+          icon-md="material:gear"
           text="Edit Profile"
         ></f7-link>
       </f7-toolbar>
