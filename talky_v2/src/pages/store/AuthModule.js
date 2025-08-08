@@ -4,9 +4,9 @@ const AuthModule = {
   state: {
     signed_in: false,
     signed_up: false,
-    show_resend_email:false,
-    photo_url:null,
-    display_name:null
+    show_resend_email: false,
+    photo_url: null,
+    display_name: null
   },
   getters: {
     signed_in: state => state.signed_in,
@@ -64,8 +64,11 @@ const AuthModule = {
           });
         })
         .catch(function(error) {
-          // Handle Errors here.
-          commit("setAlertMessage", error);
+          // Handle Errors here
+          const parsed = JSON.parse(error.message);
+          const firebaseMsg = parsed.error.message; // "INVALID_LOGIN_CREDENTIALS"
+
+          commit("setAlertMessage", firebaseMsg);
           // ...
         });
     },
