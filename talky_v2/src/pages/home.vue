@@ -7,12 +7,14 @@
         </f7-nav-left>
         <f7-nav-title sliding>Talky </f7-nav-title>
         <f7-nav-right>
+            <!-- Friend requests -->
             <f7-link href="/requests/">
-                <f7-icon f7="persons">
+                <f7-icon f7="person_2_fill">
                     <f7-badge color="red" v-if="friend_requests.length>0">{{friend_requests.length}}</f7-badge>
                 </f7-icon>
             </f7-link>
-            <f7-link icon-f7="add" href="/contacts/">
+            <!-- Add new user -->
+            <f7-link icon-f7="person_crop_circle_badge_plus" href="/contacts/">
 
             </f7-link>
         </f7-nav-right>
