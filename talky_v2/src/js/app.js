@@ -19,8 +19,12 @@ import App from '../components/app.vue';
 import store from "../pages/store/store";
 import firebase from 'firebase';
 import lodash from 'lodash'
+
 // Init Framework7-Vue Plugin
-Framework7.use(Framework7Vue,lodash);
+import Statusbar from 'framework7/components/statusbar/statusbar.js';
+Framework7.use([Framework7Vue, Statusbar, lodash]);
+// Framework7.use(Framework7Vue,lodash);
+
 let newapp = null
 firebase.auth().onAuthStateChanged(function(user) {
   console.log('user in app.js',user)
