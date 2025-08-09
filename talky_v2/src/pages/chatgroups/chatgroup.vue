@@ -8,7 +8,6 @@
         </f7-nav-right>
 
     </f7-navbar>
-    <pre>{{group_messages}}</pre>
     <f7-actions v-if="user_uid == chatgroup.owner" ref="groupOptions">
         <f7-actions-group>
             <f7-actions-label>Group Options</f7-actions-label>

@@ -9,23 +9,23 @@ export default new Vuex.Store({
   modules: {
     auth: AuthModule,
     file: FileModule,
-    chat:ChatModule,
-    groupchat:ChatGroupModule
+    chat: ChatModule,
+    groupchat: ChatGroupModule,
   },
   state: {
-    alert_message:null,
-    show_tabbar:true
+    alert_message: null,
+    show_tabbar: true,
   },
-  getters:{
-    alert_message:state=>state.alert_message,
-    show_tabbar:state=>state.show_tabbar
+  getters: {
+    alert_message: (state) => state.alert_message,
+    show_tabbar: (state) => state.show_tabbar,
   },
   mutations: {
-    setAlertMessage(state,payload){
-      state.alert_message = payload
+    setAlertMessage(state, payload) {
+      state.alert_message = payload;
     },
-    setShowTabs(state,payload){
-      state.show_tabbar = payload
-    }
-  }
+    setShowTabs(state, payload) {
+      state.show_tabbar = payload;
+    },
+  },
 });

@@ -10,7 +10,7 @@
           <div class="wrapper">
             <img class="image--cover" :src="photo_url" alt />
           </div>
-          <f7-block style="text-align:center;">{{display_name}}</f7-block>
+          <f7-block style="text-align:center;">{{ display_name }}</f7-block>
 
           <f7-list>
             <f7-list-item link="/signin/" view=".view-main" panel-close title="Sign in"></f7-list-item>
@@ -24,28 +24,12 @@
     <f7-views tabs class="safe-areas" v-if="signed_in">
       <!-- Tabbar for switching views-tabs -->
       <f7-toolbar tabbar labels bottom v-show="show_tabbar">
-        <f7-link
-          tab-link="#view-home"
-          tab-link-active
-          icon-ios="f7:house_fil"
-          icon-aurora="f7:house_fil"
-          icon-md="material:house"
-          text="Home"
-        ></f7-link>
-        <f7-link
-          tab-link="#view-chatgroups"
-          icon-ios="f7:person_2_fill"
-          icon-aurora="f7:person_2_fill"
-          icon-md="material:person_2"
-          text="Groups"
-        ></f7-link>
-        <f7-link
-          tab-link="#view-settings"
-          icon-ios="f7:gear_alt_fill"
-          icon-aurora="f7:gear_alt_fill"
-          icon-md="material:gear"
-          text="Edit Profile"
-        ></f7-link>
+        <f7-link tab-link="#view-home" tab-link-active icon-ios="f7:house_fil" icon-aurora="f7:house_fil"
+          icon-md="material:house" text="Home"></f7-link>
+        <f7-link tab-link="#view-chatgroups" icon-ios="f7:person_2_fill" icon-aurora="f7:person_2_fill"
+          icon-md="material:person_2" text="Groups"></f7-link>
+        <f7-link tab-link="#view-settings" icon-ios="f7:gear_alt_fill" icon-aurora="f7:gear_alt_fill"
+          icon-md="material:gear" text="Edit Profile"></f7-link>
       </f7-toolbar>
 
       <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
@@ -80,20 +64,10 @@
         <f7-page login-screen>
           <f7-login-screen-title>Login</f7-login-screen-title>
           <f7-list form>
-            <f7-list-input
-              type="text"
-              name="username"
-              placeholder="Your username"
-              :value="username"
-              @input="username = $event.target.value"
-            ></f7-list-input>
-            <f7-list-input
-              type="password"
-              name="password"
-              placeholder="Your password"
-              :value="password"
-              @input="password = $event.target.value"
-            ></f7-list-input>
+            <f7-list-input type="text" name="username" placeholder="Your username" :value="username"
+              @input="username = $event.target.value"></f7-list-input>
+            <f7-list-input type="password" name="password" placeholder="Your password" :value="password"
+              @input="password = $event.target.value"></f7-list-input>
           </f7-list>
           <f7-list>
             <f7-list-button title="Sign In" login-screen-close @click="alertLoginData"></f7-list-button>
@@ -113,14 +87,14 @@ import firebase from "firebase";
 import cordovaApp from "../js/cordova-app.js";
 import routes from "../js/routes.js";
 var firebaseConfig = {
-    apiKey: "AIzaSyBTPIwh0VxrQ8tWvujqtSitXKP2_dqg870",
-    authDomain: "talky-3da8d.firebaseapp.com",
-    projectId: "talky-3da8d",
-    storageBucket: "gs://talky-3da8d.appspot.com",
-    messagingSenderId: "200745711387",
-    appId: "1:200745711387:web:62a650682031e00d3685be",
-    measurementId: "G-BTJRWSG4H7"
-  };
+  apiKey: "AIzaSyBTPIwh0VxrQ8tWvujqtSitXKP2_dqg870",
+  authDomain: "talky-3da8d.firebaseapp.com",
+  projectId: "talky-3da8d",
+  storageBucket: "gs://talky-3da8d.appspot.com",
+  messagingSenderId: "200745711387",
+  appId: "1:200745711387:web:62a650682031e00d3685be",
+  measurementId: "G-BTJRWSG4H7"
+};
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 import { mixin } from "../js/mixin";
@@ -133,7 +107,7 @@ export default {
         name: "Talky", // App name
         theme: "auto", // Automatic theme detection
         // App root data
-        data: function() {
+        data: function () {
           return {
             user: {
               firstName: "John",
@@ -236,4 +210,3 @@ export default {
   object-position: center;
 }
 </style>
-

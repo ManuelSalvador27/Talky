@@ -1,19 +1,22 @@
 <template>
-<f7-page name="signup">
-    <f7-navbar title="Sign up" back-link="Back"></f7-navbar>
-    <div class="wrapper">
-        <img class="image--cover" :src="image_url" alt="" @click="launchFilePicker">
-    </div>
+    <f7-page name="signup">
+        <f7-navbar title="Sign up" back-link="Back"></f7-navbar>
+        <div class="wrapper">
+            <img class="image--cover" :src="image_url" alt="" @click="launchFilePicker">
+        </div>
 
         <f7-list no-hairlines-md>
-            <f7-list-input :value="name" @input="name=$event.target.value" label="Name" type="text" placeholder="Your name" clear-button>
+            <f7-list-input :value="name" @input="name = $event.target.value" label="Name" type="text"
+                placeholder="Your name" clear-button>
 
             </f7-list-input>
-            <f7-list-input :value="email" @input="email=$event.target.value" label="E-mail" type="email" placeholder="Your e-mail" clear-button>
+            <f7-list-input :value="email" @input="email = $event.target.value" label="E-mail" type="email"
+                placeholder="Your e-mail" clear-button>
 
             </f7-list-input>
 
-            <f7-list-input :value="password" @input="password=$event.target.value" label="Password" type="password" placeholder="Your password" clear-button>
+            <f7-list-input :value="password" @input="password = $event.target.value" label="Password" type="password"
+                placeholder="Your password" clear-button>
 
             </f7-list-input>
 
@@ -23,7 +26,7 @@
             <input type="file" ref="file" style="display:none;" @change="onFilePicked">
 
         </f7-block>
-</f7-page>
+    </f7-page>
 </template>
 
 <script>
@@ -50,13 +53,13 @@ export default {
         files() {
             return this.$store.getters.files
         },
-        signed_up(){
+        signed_up() {
             return this.$store.getters.signed_up
         }
     },
-    watch:{
-        signed_up(value){
-            if(value==true){
+    watch: {
+        signed_up(value) {
+            if (value == true) {
                 this.$f7router.navigate('/signin/')
             }
         }
@@ -69,7 +72,7 @@ export default {
         },
         onFilePicked() {
             //read the image file
-            this.$store.dispatch('readFile','setImageURL')
+            this.$store.dispatch('readFile', 'setImageURL')
         },
         signUp() {
             const self = this
@@ -79,7 +82,7 @@ export default {
             payload.password = this.password
             payload.photoURL = this.image_url
             if (self.files) {
-                self.$store.dispatch('uploadFile','profile/').then(url => {
+                self.$store.dispatch('uploadFile', 'profile/').then(url => {
                     payload.photoURL = url
                     self.$store.dispatch('signUp', payload)
                 })
@@ -91,8 +94,8 @@ export default {
         },
 
     },
-    created(){
-        this.$store.commit('setSignedUp',false)
+    created() {
+        this.$store.commit('setSignedUp', false)
     }
 }
 </script>

@@ -1,12 +1,13 @@
 <template>
-<f7-page name="editprofile">
-    <f7-navbar title="Edit Profile"></f7-navbar>
-    <div class="wrapper">
-        <img class="image--cover" :src="image_url" alt="" @click="launchFilePicker">
-    </div>
+    <f7-page name="editprofile">
+        <f7-navbar title="Edit Profile"></f7-navbar>
+        <div class="wrapper">
+            <img class="image--cover" :src="image_url" alt="" @click="launchFilePicker">
+        </div>
 
         <f7-list no-hairlines-md>
-            <f7-list-input :value="display_name" @input="display_name=$event.target.value" label="Name" type="text" placeholder="Your name" clear-button>
+            <f7-list-input :value="display_name" @input="display_name = $event.target.value" label="Name" type="text"
+                placeholder="Your name" clear-button>
 
             </f7-list-input>
 
@@ -14,9 +15,9 @@
         <f7-block>
             <f7-button outline @click="updateProfile">Update Profile</f7-button>
             <input type="file" ref="file" style="display:none;" @change="onFilePicked">
-           
+
         </f7-block>
-</f7-page>
+    </f7-page>
 </template>
 
 <script>
@@ -64,46 +65,46 @@ export default {
         },
         onFilePicked() {
             //read the image file
-            this.$store.dispatch('readFile','setImageURL')
+            this.$store.dispatch('readFile', 'setImageURL')
         },
-        updateProfile(){
+        updateProfile() {
             const self = this
             if (self.files) {
                 var user = firebase.auth().currentUser;
-                if (this.photo_url!=null) {
+                if (this.photo_url != null) {
                     var storage = firebase.storage();
                     var httpReference = storage.refFromURL(this.photo_url);
-                    httpReference.delete().then(()=>{
+                    httpReference.delete().then(() => {
 
-                    }).catch(err=>{
+                    }).catch(err => {
                         console.log(err)
                     })
                 }
-                self.$store.dispatch('uploadFile','profile/').then(url => {
-                   user.updateProfile({
-                       displayName:self.display_name,
-                       photoURL:url
-                   }).then(function(){
-                       self.$store.commit('setPhotoURL',user.photoURL);
-                       self.$store.commit('setDisplayName',user.displayName);
-                       firebase.database().ref('users/'+user.uid).update({
-                           photo_url:user.photoURL,
-                           name:user.displayName
-                       })
+                self.$store.dispatch('uploadFile', 'profile/').then(url => {
+                    user.updateProfile({
+                        displayName: self.display_name,
+                        photoURL: url
+                    }).then(function () {
+                        self.$store.commit('setPhotoURL', user.photoURL);
+                        self.$store.commit('setDisplayName', user.displayName);
+                        firebase.database().ref('users/' + user.uid).update({
+                            photo_url: user.photoURL,
+                            name: user.displayName
+                        })
 
-                   }).catch(err=>{
-                       console.log(err)
-                   })
+                    }).catch(err => {
+                        console.log(err)
+                    })
                 })
             } else {
                 user.updateProfile({
-                    displayName:self.display_name,
-                }).then(function(){
-                    self.$store.commit('setDisplayName',user.displayName)
+                    displayName: self.display_name,
+                }).then(function () {
+                    self.$store.commit('setDisplayName', user.displayName)
                 })
             }
 
-        
+
         }
 
     },

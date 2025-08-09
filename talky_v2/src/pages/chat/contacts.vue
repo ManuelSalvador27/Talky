@@ -1,25 +1,16 @@
 <template>
-<f7-page name="Contacts">
-    <f7-navbar title="Contacts" back-link="Back"></f7-navbar>
-    <f7-list media-list>
-        <f7-list-item 
-            swipeout v-for="(contact, index) in contacts" 
-            :key="index" 
-            :title="contact.name"
-        >
-            <img
-                class="small-avatar" 
-                slot="media" 
-                :src="contact.photo_url" 
-                @error="setDefaultImage"
-            />
-            <f7-swipeout-actions right>
-                <f7-swipeout-button color="green" @click="addFriend(contact)">Add</f7-swipeout-button>
-            </f7-swipeout-actions>
-        </f7-list-item>
+    <f7-page name="Contacts">
+        <f7-navbar title="Contacts" back-link="Back"></f7-navbar>
+        <f7-list media-list>
+            <f7-list-item swipeout v-for="(contact, index) in contacts" :key="index" :title="contact.name">
+                <img class="small-avatar" slot="media" :src="contact.photo_url" @error="setDefaultImage" />
+                <f7-swipeout-actions right>
+                    <f7-swipeout-button color="green" @click="addFriend(contact)">Add</f7-swipeout-button>
+                </f7-swipeout-actions>
+            </f7-list-item>
 
-    </f7-list>
-</f7-page>
+        </f7-list>
+    </f7-page>
 </template>
 
 <script>
@@ -44,7 +35,7 @@ export default {
             const self = this
             request.sender = firebase.auth().currentUser.uid;
             request.recipient = frd.uid
-            console.log('request', request)
+            // console.log('request', request)
             self.$store.commit('setAlertMessage', 'Friend request sent!')
             this.$store.dispatch('sendRequest', request)
         },

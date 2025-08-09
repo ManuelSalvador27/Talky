@@ -1,113 +1,110 @@
+import HomePage from "../pages/home.vue";
+import AboutPage from "../pages/about.vue";
+import FormPage from "../pages/form.vue";
+import CatalogPage from "../pages/catalog.vue";
+import ProductPage from "../pages/product.vue";
+import SettingsPage from "../pages/settings.vue";
 
-import HomePage from '../pages/home.vue';
-import AboutPage from '../pages/about.vue';
-import FormPage from '../pages/form.vue';
-import CatalogPage from '../pages/catalog.vue';
-import ProductPage from '../pages/product.vue';
-import SettingsPage from '../pages/settings.vue';
+import DynamicRoutePage from "../pages/dynamic-route.vue";
+import RequestAndLoad from "../pages/request-and-load.vue";
+import NotFoundPage from "../pages/404.vue";
 
-import DynamicRoutePage from '../pages/dynamic-route.vue';
-import RequestAndLoad from '../pages/request-and-load.vue';
-import NotFoundPage from '../pages/404.vue';
+import SignInPage from "../pages/auth/signin.vue";
+import SignUpPage from "../pages/auth/signup.vue";
+import EditProfilePage from "../pages/auth/editprofile.vue";
 
-import SignInPage from '../pages/auth/signin.vue';
-import SignUpPage from '../pages/auth/signup.vue';
-import EditProfilePage from '../pages/auth/editprofile.vue';
+import ContactsPage from "../pages/chat/contacts.vue";
+import RequestsPage from "../pages/chat/requests.vue";
+import ChatPage from "../pages/chat/chat.vue";
 
-import ContactsPage from '../pages/chat/contacts.vue';
-import RequestsPage from '../pages/chat/requests.vue';
-import ChatPage from '../pages/chat/chat.vue';
-
-import ChatGroups from '../pages/chatgroups/chatgroups.vue';
-import ChatGroup from '../pages/chatgroups/chatgroup.vue';
-import NewGroup from '../pages/chatgroups/newgroup.vue';
-import AddMembers from '../pages/chatgroups/addmembers.vue';
-import GroupInfo from '../pages/chatgroups/groupinfo.vue';
-import GroupMembers from '../pages/chatgroups/groupmembers.vue';
-
-
+import ChatGroups from "../pages/chatgroups/chatgroups.vue";
+import ChatGroup from "../pages/chatgroups/chatgroup.vue";
+import NewGroup from "../pages/chatgroups/newgroup.vue";
+import AddMembers from "../pages/chatgroups/addmembers.vue";
+import GroupInfo from "../pages/chatgroups/groupinfo.vue";
+import GroupMembers from "../pages/chatgroups/groupmembers.vue";
 
 var routes = [
   {
-    path: '/',
+    path: "/",
     component: HomePage,
   },
   {
-    path: '/signin/',
+    path: "/signin/",
     component: SignInPage,
   },
   {
-    path: '/signup/',
+    path: "/signup/",
     component: SignUpPage,
   },
   {
-    path: '/editprofile/',
+    path: "/editprofile/",
     component: EditProfilePage,
   },
   {
-    path: '/about/',
+    path: "/about/",
     component: AboutPage,
   },
- 
+
   {
-    path: '/form/',
+    path: "/form/",
     component: FormPage,
   },
   {
-    path: '/catalog/',
+    path: "/catalog/",
     component: CatalogPage,
   },
   {
-    path: '/product/:id/',
+    path: "/product/:id/",
     component: ProductPage,
   },
   {
-    path: '/settings/',
+    path: "/settings/",
     component: SettingsPage,
   },
   {
-    path: '/contacts/',
+    path: "/contacts/",
     component: ContactsPage,
   },
   {
-    path: '/requests/',
+    path: "/requests/",
     component: RequestsPage,
   },
   {
-    path: '/chat/:frd',
+    path: "/chat/:frd",
     component: ChatPage,
   },
   {
-    path: '/chatgroups/',
+    path: "/chatgroups/",
     component: ChatGroups,
   },
   {
-    path: '/chatgroup/:group',
+    path: "/chatgroup/:group",
     component: ChatGroup,
   },
   {
-    path: '/newgroup/',
+    path: "/newgroup/",
     component: NewGroup,
   },
   {
-    path: '/addmembers/:group_name',
+    path: "/addmembers/:group_name",
     component: AddMembers,
   },
   {
-    path: '/groupmembers/:group_name',
+    path: "/groupmembers/:group_name",
     component: GroupMembers,
   },
   {
-    path: '/groupinfo/:group_name',
+    path: "/groupinfo/:group_name",
     component: GroupInfo,
   },
 
   {
-    path: '/dynamic-route/blog/:blogId/post/:postId/',
+    path: "/dynamic-route/blog/:blogId/post/:postId/",
     component: DynamicRoutePage,
   },
   {
-    path: '/request-and-load/user/:userId/',
+    path: "/request-and-load/user/:userId/",
     async: function (routeTo, routeFrom, resolve, reject) {
       // Router instance
       var router = this;
@@ -125,19 +122,19 @@ var routes = [
       setTimeout(function () {
         // We got user data from request
         var user = {
-          firstName: 'Vladimir',
-          lastName: 'Kharlampidi',
-          about: 'Hello, i am creator of Framework7! Hope you like it!',
+          firstName: "Vladimir",
+          lastName: "Kharlampidi",
+          about: "Hello, i am creator of Framework7! Hope you like it!",
           links: [
             {
-              title: 'Framework7 Website',
-              url: 'http://framework7.io',
+              title: "Framework7 Website",
+              url: "http://framework7.io",
             },
             {
-              title: 'Framework7 Forum',
-              url: 'http://forum.framework7.io',
+              title: "Framework7 Forum",
+              url: "http://forum.framework7.io",
             },
-          ]
+          ],
         };
         // Hide Preloader
         app.preloader.hide();
@@ -150,14 +147,14 @@ var routes = [
           {
             context: {
               user: user,
-            }
+            },
           }
         );
       }, 1000);
     },
   },
   {
-    path: '(.*)',
+    path: "(.*)",
     component: NotFoundPage,
   },
 ];

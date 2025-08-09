@@ -6,14 +6,14 @@ const AuthModule = {
     signed_up: false,
     show_resend_email: false,
     photo_url: null,
-    display_name: null
+    display_name: null,
   },
   getters: {
-    signed_in: state => state.signed_in,
-    signed_up: state => state.signed_up,
-    show_resend_email: state => state.show_resend_email,
-    photo_url: state => state.photo_url,
-    display_name: state => state.display_name
+    signed_in: (state) => state.signed_in,
+    signed_up: (state) => state.signed_up,
+    show_resend_email: (state) => state.show_resend_email,
+    photo_url: (state) => state.photo_url,
+    display_name: (state) => state.display_name,
   },
   mutations: {
     setSignedIn(state, payload) {
@@ -30,40 +30,37 @@ const AuthModule = {
     },
     setDisplayName(state, payload) {
       state.display_name = payload;
-    }
+    },
   },
   actions: {
     signIn({ commit }, payload) {
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
-        .then(user => {
+        .then((user) => {
           //logined in
-          firebase.auth().onAuthStateChanged(function(user) {
-            if(user!=null){
-              console.log('user in action',user)
+          firebase.auth().onAuthStateChanged(function (user) {
+            if (user != null) {
+              console.log("user in action", user);
               if (user.emailVerified) {
-                console.log(user.displayName)
+                console.log(user.displayName);
                 commit("setAlertMessage", `Welcome ${user.displayName}`);
-                console.log('verified')
+                console.log("verified");
                 commit("setSignedIn", true);
-                commit("setShowResendEmail",false)
-
-                
+                commit("setShowResendEmail", false);
               } else {
                 // No user is signed in.
-                console.log('not verified')
+                console.log("not verified");
                 commit("setSignedIn", false);
                 commit("setAlertMessage", "Please verify with your email");
-                commit("setShowResendEmail",true)
+                commit("setShowResendEmail", true);
               }
-            }else{
+            } else {
               return;
             }
-           
           });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // Handle Errors here
           const parsed = JSON.parse(error.message);
           const firebaseMsg = parsed.error.message; // "INVALID_LOGIN_CREDENTIALS"
@@ -76,35 +73,31 @@ const AuthModule = {
       firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
-        .then(data => {
-          firebase
-            .database()
-            .ref("users")
-            .child(data.user.uid)
-            .set({
-              uid: data.user.uid,
-              name: payload.name,
-              email: payload.email,
-              emailverified: false,
-              photo_url: payload.photoURL
-            });
+        .then((data) => {
+          firebase.database().ref("users").child(data.user.uid).set({
+            uid: data.user.uid,
+            name: payload.name,
+            email: payload.email,
+            emailverified: false,
+            photo_url: payload.photoURL,
+          });
           let newuser = data.user;
           newuser
             .updateProfile({
               displayName: payload.name,
-              photoURL: payload.photoURL
+              photoURL: payload.photoURL,
             })
             .then(() => {
               dispatch("sendVerification");
               commit("setSignedUp", true);
               console.log("updated profile");
             })
-            .catch(err => {
+            .catch((err) => {
               console.log(err.message);
               commit("setAlertMessage", err.message);
             });
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.message);
           commit("setAlertMessage", err.message);
         });
@@ -122,17 +115,17 @@ const AuthModule = {
 
       user
         .sendEmailVerification()
-        .then(function() {
+        .then(function () {
           // Email sent.
           commit(
             "setAlertMessage",
             `A verification email has been sent to ${user.email}`
           );
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // An error happened.
         });
-    }
-  }
+    },
+  },
 };
 export default AuthModule;
