@@ -68,45 +68,70 @@ export default {
             this.$store.dispatch('readFile', 'setImageURL')
         },
         updateProfile() {
-            const self = this
-            if (self.files) {
-                var user = firebase.auth().currentUser;
-                if (this.photo_url != null) {
-                    var storage = firebase.storage();
-                    var httpReference = storage.refFromURL(this.photo_url);
-                    httpReference.delete().then(() => {
+            const self = this;
+            const user = firebase.auth().currentUser;
 
-                    }).catch(err => {
-                        console.log(err)
-                    })
+            if (!user) {
+                console.error('No user is authenticated.');
+                self.$store.commit("setAlertMessage", "No hay usuario autenticado.");
+                return;
+            }
+
+            // Si hay archivo de imagen seleccionado
+            if (self.files) {
+                const storage = firebase.storage();
+
+                // Eliminar imagen anterior si existe
+                if (this.photo_url) {
+                    try {
+                        const httpReference = storage.refFromURL(this.photo_url);
+                        httpReference.delete().catch(err => {
+                            console.warn('No se pudo eliminar imagen anterior:', err);
+                        });
+                    } catch (err) {
+                        console.warn('photo_url inválido o error al eliminar:', err);
+                    }
                 }
+
+                // Subir imagen nueva y actualizar perfil
                 self.$store.dispatch('uploadFile', 'profile/').then(url => {
                     user.updateProfile({
                         displayName: self.display_name,
                         photoURL: url
-                    }).then(function () {
-                        self.$store.commit('setPhotoURL', user.photoURL);
-                        self.$store.commit('setDisplayName', user.displayName);
+                    }).then(() => {
+                        self.$store.commit('setPhotoURL', url);
+                        self.$store.commit('setDisplayName', self.display_name);
+
                         firebase.database().ref('users/' + user.uid).update({
-                            photo_url: user.photoURL,
-                            name: user.displayName
-                        })
+                            photo_url: url,
+                            name: self.display_name
+                        });
+
+                        // ✅ Mensaje de éxito
+                        self.$store.commit("setAlertMessage", "Perfil actualizado correctamente");
 
                     }).catch(err => {
-                        console.log(err)
-                    })
-                })
+                        console.error('Error al actualizar perfil en Firebase Auth:', err);
+                        self.$store.commit("setAlertMessage", "Error al actualizar el perfil");
+                    });
+                });
+
             } else {
+                // Solo actualizar nombre
                 user.updateProfile({
-                    displayName: self.display_name,
-                }).then(function () {
-                    self.$store.commit('setDisplayName', user.displayName)
-                })
+                    displayName: self.display_name
+                }).then(() => {
+                    self.$store.commit('setDisplayName', self.display_name);
+
+                    // ✅ Mensaje de éxito
+                    self.$store.commit("setAlertMessage", "Nombre actualizado correctamente");
+
+                }).catch(err => {
+                    console.error('Error al actualizar nombre:', err);
+                    self.$store.commit("setAlertMessage", "Error al actualizar el nombre");
+                });
             }
-
-
         }
-
     },
     created() {
         if (this.photo_url != null) {
