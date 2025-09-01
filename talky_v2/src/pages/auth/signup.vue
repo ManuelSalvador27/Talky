@@ -30,12 +30,8 @@
 </template>
 
 <script>
-// import {
-//     setTimeout
-// } from 'timers';
-import {
-    mixin
-} from '../../js/mixin'
+import { mixin } from '../../js/mixin'
+import defaultAvatar from '@/assets/defaultAvatar.png'
 export default {
     mixins: [mixin],
     data() {
@@ -48,7 +44,7 @@ export default {
     },
     computed: {
         image_url() {
-            return this.$store.getters.image_url
+            return this.$store.getters.image_url || defaultAvatar;
         },
         files() {
             return this.$store.getters.files
